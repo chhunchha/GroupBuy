@@ -1,0 +1,52 @@
+{
+  "groupbuyevents": {
+    "groupbuyevent1": {
+    	"make": "Honda",
+      	"model": "Civic",
+  		"year": 2014,
+  		"dealer": "Honda Sunnyvale",
+  		"price": 24000,
+  		"discountPer": 10,
+  		"offerValidTill": "15-Aug-2015",
+  		"minGroupSize": 3,
+  		"buyers": [
+  			{ "userId" : "user1" }, {"userId" : "user2"}, {"userId" : "user3"}
+  		]
+    },
+    "groupbuyevent2": {
+    	"make": "Honda",
+      	"model": "Accord",
+  		"year": 2015,
+  		"dealer": "Honda Sunnyvale",
+  		"price": 21000,
+  		"discountPer": 8,
+  		"offerValidTill": "15-Jul-2015",
+  		"minGroupSize": 4,
+  		"buyers": [
+  			{ "userId" : "user2" }, {"userId" : "user4"}, {"userId" : "user8"}
+  		]
+    }
+  },
+  "users": {
+  	"user1": {
+  		"name": "A B",
+  		"phone": "123",
+  		"email": "test@test.com"
+  	},
+  	"user2": {
+  		"name": "C D",
+  		"phone": "345",
+  		"email": "test@test2.com"
+  	},
+  	"user3": {
+  		"name": "R E",
+  		"phone": "3424",
+  		"email": "test@test3.com"
+  	},
+  	"user4": {
+  		"name": "A S",
+  		"phone": "123123",
+  		"email": "test@test4.com"
+  	}
+  }
+}
