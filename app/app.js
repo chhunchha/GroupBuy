@@ -6,7 +6,9 @@ var app = angular.module('myApp', [
   'myApp.GroupBuyEvents',
   'myApp.view2',
   'myApp.version',
-  'firebase'
+  'firebase',
+  'edmunds',
+  'ui.bootstrap'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/GroupBuyEvents'});

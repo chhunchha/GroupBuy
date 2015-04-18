@@ -1,4 +1,58 @@
+
 /* app css stylesheet */
+
+
+body {
+  font-size: 16px;
+  font-family: 'Tangerine', serif;
+  color: #34495e !important;
+}
+
+.frmField {
+  margin: 0 0 10px 10px;
+  font-size: 20px !important;
+}
+
+.topBar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 80px;
+  background: #27ae60;
+  width: 100%;
+  z-index: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mainContainer {
+  margin: 70px 0 0 0;
+  padding: 10px;
+}
+
+.notesField {
+  width: 100%;
+}
+
+.formActionButtons {
+  width: 100%;
+}
+
+.groupEvent {
+  height: 250px;
+  width: 250px;
+  background: #f1c40f;
+  margin: 10px;
+  float: left;
+}
+
+.g-float-right {
+  float: right;
+}
+
+.g-float-left {
+  float: left;
+}
 
 .menu {
   list-style: none;
