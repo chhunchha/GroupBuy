@@ -20,7 +20,7 @@ body {
   height: 80px;
   background: #27ae60;
   width: 100%;
-  z-index: 1;
+  z-index: 1000;
   padding-left: 10px;
   padding-right: 10px;
 }

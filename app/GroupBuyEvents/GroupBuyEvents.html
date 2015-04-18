@@ -45,7 +45,15 @@
 
 			<div style="display:inline-block; margin-left:10px;">
 				<h4> Buy Before: </h4>
-        		<datepicker ng-model="buyBefore" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+
+				<p class="input-group">
+              		<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="buyBefore" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              		<span class="input-group-btn">
+                		<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              		</span>
+            	</p>
+
+        		<!-- <datepicker ng-model="buyBefore" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker> -->
     		</div>
 
     		<textarea class="form-control frmField notesField" ng-model="notes" placeholder="Notes"></textarea>

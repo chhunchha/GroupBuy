@@ -1,0 +1,9 @@
+{
+  "firebase": "groupbuy",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

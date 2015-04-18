@@ -102,8 +102,25 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 		  	});
 		}
 
+		$scope.openDatePicker = function($event) {
+			$event.preventDefault();
+			$event.stopPropagation();
+
+			$scope.opened = true;
+		};
+
+		$scope.dateOptions = {
+			formatYear: 'yy',
+			startingDay: 1
+		};
+
+		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		$scope.format = $scope.formats[0];
+
 		$scope.toggleMin = function() {
     		$scope.minDate = $scope.minDate ? null : new Date();
+    		$scope.minDate.setDate($scope.minDate.getDate() + 30);
+    		$scope.buyBefore = $scope.minDate;
   		};
 
   		$scope.toggleMin();
