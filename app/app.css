@@ -3,7 +3,7 @@
 
 
 body {
-  font-size: 16px;
+  font-size: 20px !important;
   font-family: 'Tangerine', serif;
   color: #34495e !important;
 }
@@ -39,11 +39,13 @@ body {
 }
 
 .groupEvent {
-  height: 250px;
-  width: 250px;
+  height: 350px;
+  width: 350px;
   background: #f1c40f;
   margin: 10px;
   float: left;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .g-float-right {
