@@ -34,6 +34,9 @@
 			<input type="text" class="form-control frmField" ng-model="dealer.name" placeholder="Dealer Name"></input>
 
 			<input type="text" class="form-control frmField" ng-model="dealer.address" placeholder="Dealer address"></input>
+			<input type="text" class="form-control frmField" ng-model="dealer.zip" placeholder="zip" ng-change="getCityState()"></input>
+			<input type="text" class="form-control frmField" ng-model="dealer.city" placeHolder="City" disabled></input>
+			<input type="text" class="form-control frmField" ng-model="dealer.state" placeHolder="State" disabled></input>
 
 			<input type ="text" class="form-control frmField" ng-model="price" placeholder="Price"></input>
 			<input type="text" class="form-control frmField" ng-model="discount" placeholder="Discount"></input>
@@ -67,26 +70,32 @@
 </form>
 
 <div class="col-md-9">
-	{{groupBuyEvents}}
-	<h1> Existing groups </h1>
+<!-- 	{{groupBuyEvents}}
+ -->	<h1> Existing groups </h1>
 	<div class="groupEvent" ng-repeat="e in groupBuyEvents">
 		<div class="carInfo">
 			<span> {{e.year + ' ' + e.make + ' ' + e.model + ' ' + e.style}}</span>
 		</div>
 		<div class="dealerInfo">
-			<span> {{e.dealerName + ', ' + e.dealerAddress}} </span>
+			<span> {{e.dealerName + ', ' + e.dealerAddress + ', ' + e.city + ', ' + e.state + ' - ' + e.zip}} </span>
 		</div>
 		<div class="priceInfo">
-			<span> {{e.price + ' - ' + e.discount}} </span>
+			<span> Price: {{e.price | currency}} </span>
 		</div>
-		<div class="groupSize">
-			<span> {{e.groupSize}} </span>
+		<div class="smallCircle discountInfo">
+			{{e.discount}}
+		</div>
+		<div class="smallCircle groupSize">
+			<span> 1/{{e.groupSize}} </span>
 		</div>
 		<div class="buyBefore">
-			<span> {{e.buyBefore}} </span>
+			<span> Buy Before: {{e.buyBefore | date:'dd-MMM-yyyy'}} </span>
 		</div>
 		<div class="notes">
-			<span> {{e.notes}} </span>
+			<span> Note: {{e.notes}} </span>
+		</div>
+		<div class="cardActions">
+			<button class="joinGroupButton btn btn-sm btn-info frmField">Join</button>
 		</div>
 	</div>
 </div>

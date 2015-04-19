@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.bootstrap'])
+angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.bootstrap','zippopotam'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/GroupBuyEvents', {
@@ -9,8 +9,8 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
   });
 }])
 
-.controller('GroupBuyEventsCtrl', ['$scope','$firebaseObject','$firebaseAuth','$firebaseArray','edmundsService',
-	function($scope, $firebaseObject,$firebaseAuth, $firebaseArray, edmundsService) {
+.controller('GroupBuyEventsCtrl', ['$scope','$firebaseObject','$firebaseAuth','$firebaseArray','edmundsService','zippopotamService',
+	function($scope, $firebaseObject,$firebaseAuth, $firebaseArray, edmundsService, zippopotamService) {
 
 		var ref = new Firebase("https://groupbuy.firebaseio.com/groupbuyevents");
 		// download the data into a local object
@@ -36,9 +36,12 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 	  			style: $scope.carSelection.style.name,
 	  			dealerName: $scope.dealer.name,
 	  			dealerAddress: $scope.dealer.address,
+	  			zip: $scope.dealer.zip,
+	  			city: $scope.dealer.city,
+	  			state: $scope.dealer.state,
 	  			price: $scope.price,
 	  			discount: $scope.discount,
-	  			buyBefore: $scope.buyBefore,
+	  			buyBefore: Date.parse($scope.buyBefore),
 	  			groupSize: $scope.groupSize,
 	  			notes: $scope.notes
 	  		}
@@ -100,6 +103,19 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 		  		$scope.styles = data.years[0].styles;
 		  		console.log(data.years[0].styles);
 		  	});
+		}
+
+		$scope.getCityState = function() {
+			if($scope.dealer.zip.length == 5) {
+				zippopotamService.getCityState($scope.dealer.zip)
+				.then(function(data){
+					$scope.dealer.city = data.places[0]['place name'];
+					$scope.dealer.state = data.places[0].state;
+				});
+			} else {
+				$scope.dealer.city = '';
+				$scope.dealer.state = '';
+			}
 		}
 
 		$scope.openDatePicker = function($event) {

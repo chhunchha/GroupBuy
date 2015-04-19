@@ -38,16 +38,6 @@ body {
   width: 100%;
 }
 
-.groupEvent {
-  height: 350px;
-  width: 350px;
-  background: #f1c40f;
-  margin: 10px;
-  float: left;
-  padding: 10px;
-  border-radius: 8px;
-}
-
 .g-float-right {
   float: right;
 }
@@ -83,4 +73,74 @@ body {
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+
+
+/* card */
+
+.groupEvent {
+  height: 400px;
+  width: 350px;
+  background: #f1c40f;
+  margin: 15px;
+  float: left;
+  padding: 10px;
+  border-radius: 8px 8px 40px 40px;
+  position: relative;
+}
+
+.carInfo {
+  color: #d35400;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.dealerInfo {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.priceInfo {
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #8e44ad;
+}
+
+.notes {
+
+}
+
+.smallCircle {
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  border-radius: 100%;
+  line-height: 80px;
+}
+
+.groupSize {
+  background: #2980b9;
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.discountInfo {
+  background: #8e44ad;
+  color: white;
+  font-size: 24px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+.cardActions {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
 }

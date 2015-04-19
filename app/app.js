@@ -8,7 +8,8 @@ var app = angular.module('myApp', [
   'myApp.version',
   'firebase',
   'edmunds',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'zippopotam'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/GroupBuyEvents'});
