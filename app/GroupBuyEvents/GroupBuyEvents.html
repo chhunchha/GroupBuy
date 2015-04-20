@@ -8,67 +8,70 @@
 	</ul>
 </div> -->
 
-<form>
-	<div class="col-md-3">
-		<form name="groupCreationForm">
-			<h4> Are you? </h4>
-			<div class="btn-group">
-        		<label class="btn btn-primary" ng-model="typeOfUser" btn-radio="'Buyer'">Buyer</label>
-        		<label class="btn btn-primary" ng-model="typeOfUser" btn-radio="'Dealer'">Dealer</label>
-		    </div>
-			<h2> Lets select car </h2>
-			<select class="form-control frmField" ng-model="carSelection.year" ng-change="getMakes()">
-				<option ng-repeat="i in noOfYears(5) track by $index" value="{{currentYear - $index}}"> {{currentYear - $index}}
-				</option>
-			</select>
-			<select class="form-control frmField" ng-model="carSelection.make" ng-change="refreshModels()" ng-options="make.name for make in makes.makes">
-				<option value=""> Select Make</option>
-			</select>
-			<select class="form-control frmField" ng-model="carSelection.model" ng-change="getStyles()" ng-options="model.name for model in models">
-				<option value=""> Select Model</option>
-			</select>
-			<select class="form-control frmField" ng-model="carSelection.style" ng-change="" ng-options="style.name for style in styles">
-				<option value=""> Select style</option>
-			</select>
-			<h2> Car Dealer Information </h2>
+<div class="col-md-3" id="top">
+	<form name="groupCreationForm">
+		<h4> Are you? </h4>
+		<div class="btn-group">
+    		<label class="btn btn-primary" ng-model="typeOfUser" btn-radio="'Buyer'">Buyer</label>
+    		<label class="btn btn-primary" ng-model="typeOfUser" btn-radio="'Dealer'">Dealer</label>
+	    </div>
+		<h4>Select car </h4>
+		<select class="form-control frmField" ng-model="carSelection.year" ng-change="getMakes()">
+			<option ng-repeat="i in noOfYears(5) track by $index" value="{{currentYear - $index}}"> {{currentYear - $index}}
+			</option>
+		</select>
+		<select class="form-control frmField" ng-model="carSelection.make" ng-change="refreshModels()" ng-options="make.name for make in makes.makes">
+			<option value=""> Select Make</option>
+		</select>
+		<select class="form-control frmField" ng-model="carSelection.model" ng-change="getStyles()" ng-options="model.name for model in models">
+			<option value=""> Select Model</option>
+		</select>
+		<select class="form-control frmField" ng-model="carSelection.style" ng-change="" ng-options="style.name for style in styles">
+			<option value=""> Select style</option>
+		</select>
+		<div style="display:inline-block; width: 100%;">
+			<h4> Car Dealer Information </h4>
 			<input type="text" class="form-control frmField" ng-model="dealer.name" placeholder="Dealer Name"></input>
 
 			<input type="text" class="form-control frmField" ng-model="dealer.address" placeholder="Dealer address"></input>
 			<input type="text" class="form-control frmField" ng-model="dealer.zip" placeholder="zip" ng-change="getCityState()"></input>
 			<input type="text" class="form-control frmField" ng-model="dealer.city" placeHolder="City" disabled></input>
 			<input type="text" class="form-control frmField" ng-model="dealer.state" placeHolder="State" disabled></input>
-
+		</div>
+		<div style="display:inline-block; width: 100%;">
+			<h4> Pricing </h4>
 			<input type ="text" class="form-control frmField" ng-model="price" placeholder="Price"></input>
 			<input type="text" class="form-control frmField" ng-model="discount" placeholder="Discount"></input>
-			<h4 style="margin-left: 10px"> Group size: </h4>
+			<h4> Group size: </h4>
 			<select class="form-control frmField" ng-model="groupSize">
 				<option ng-repeat="i in noOfYears(9) track by $index" value="{{$index + 2}}"> {{$index + 2}}
 				</option>
 			</select>
+		</div>
+		<div style="display:inline-block; width: 100%;">
+			<h4> Buy Before: </h4>
 
-			<div style="display:inline-block; margin-left:10px; width: 100%;">
-				<h4> Buy Before: </h4>
+			<p class="input-group">
+          		<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="buyBefore" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+          		<span class="input-group-btn">
+            		<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          		</span>
+        	</p>
 
-				<p class="input-group">
-              		<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="buyBefore" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-              		<span class="input-group-btn">
-                		<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              		</span>
-            	</p>
+    		<!-- <datepicker ng-model="buyBefore" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker> -->
+		</div>
 
-        		<!-- <datepicker ng-model="buyBefore" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker> -->
-    		</div>
+		<textarea class="form-control frmField notesField" ng-model="notes" placeholder="Notes"></textarea>
 
-    		<textarea class="form-control frmField notesField" ng-model="notes" placeholder="Notes"></textarea>
-
-    		<div class="formActionButtons">
-				<button class="btn btn-sm btn-info g-float-right frmField" ng-click="saveGroupBuyForm()"> Create </button>
-				<button class="btn btn-sm btn-danger g-float-right frmField" ng-click="resetGroupBuyForm()"> Clear </button>
-			</div>
-		</form>
-	</div>
-</form>
-
+		<div class="formActionButtons">
+			<button class="btn btn-sm btn-info g-float-right frmButton" ng-click="saveGroupBuyForm()"> Create </button>
+			<button class="btn btn-sm btn-danger g-float-right frmButton" ng-click="resetGroupBuyForm()"> Clear </button>
+		</div>
+	</form>
+</div>
+<div class="goToTop">
+	<a href="#top"> ^ Top </a>
+</div>
 <div class="col-md-9">
 <!-- 	{{groupBuyEvents}}
  -->	<h1> Existing groups </h1>

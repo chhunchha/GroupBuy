@@ -9,6 +9,11 @@ body {
 }
 
 .frmField {
+  margin: 0 0 10px 0px;
+  font-size: 20px !important;
+}
+
+.frmButton {
   margin: 0 0 10px 10px;
   font-size: 20px !important;
 }
@@ -23,11 +28,42 @@ body {
   z-index: 1000;
   padding-left: 10px;
   padding-right: 10px;
+  border-bottom: 1px dashed #f1c40f;
+}
+
+.goToTop {
+  position: fixed;
+  bottom: 10px;
+  left: 0px;
+  background:  #27ae60;
+  padding-right: 10px;
+  border-radius: 0 10px 10px 0px;
 }
 
 .mainContainer {
   margin: 70px 0 0 0;
   padding: 10px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  /* IE10 Consumer Preview */
+  background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #27AE60 100%);
+
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #27AE60 100%);
+
+  /* Opera */
+  background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #27AE60 100%);
+
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #27AE60));
+
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #27AE60 100%);
+
+  /* W3C Markup, IE10 Release Preview */
+  background-image: linear-gradient(to top, #FFFFFF 0%, #27AE60 100%);
 }
 
 .notesField {
@@ -81,13 +117,14 @@ body {
 
 .groupEvent {
   height: 400px;
-  width: 350px;
+  width: 31%;
   background: #f1c40f;
-  margin: 15px;
+  margin: 1%;
   float: left;
   padding: 10px;
-  border-radius: 8px 8px 40px 40px;
+  /* border-radius: 8px 8px 40px 40px; */
   position: relative;
+  outline: 3px dashed #f1c40f;
 }
 
 .carInfo {
@@ -116,7 +153,7 @@ body {
   height: 80px;
   width: 80px;
   text-align: center;
-  border-radius: 100%;
+/*  border-radius: 100%;*/
   line-height: 80px;
 }
 
@@ -127,6 +164,7 @@ body {
   position: absolute;
   bottom: 0px;
   left: 0px;
+  border-radius: 100% 100% 100% 0;
 }
 
 .discountInfo {
@@ -136,6 +174,7 @@ body {
   position: absolute;
   right: 0px;
   bottom: 0px;
+  border-radius: 100% 100% 0% 100%;
 }
 
 .cardActions {
