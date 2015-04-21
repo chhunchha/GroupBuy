@@ -8,6 +8,37 @@ body {
   color: #34495e !important;
 }
 
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+
 .frmField {
   margin: 0 0 10px 0px;
   font-size: 20px !important;
@@ -22,7 +53,8 @@ body {
   position: fixed;
   top: 0px;
   left: 0px;
-  height: 80px;
+  height: 10%;
+  min-height: 80px;
   background: #27ae60;
   width: 100%;
   z-index: 1000;
@@ -38,16 +70,26 @@ body {
   background:  #27ae60;
   padding-right: 10px;
   border-radius: 0 10px 10px 0px;
+  opacity: 0.5;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.6);
+}
+
+.goToTop:hover {
+  opacity: 1;
 }
 
 .mainContainer {
-  margin: 70px 0 0 0;
-  padding: 10px;
+/*  padding: 10px;*/
   position: absolute;
-  height: 100%;
+  top: 10%;
+  height: 90%;
   width: 100%;
   overflow: auto;
-  /* IE10 Consumer Preview */
+  background: url(http://subtlepatterns.com/patterns/little_pluses.png) #cacaca;
+}
+
+.gradiantShadow {
+    /* IE10 Consumer Preview */
   background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #27AE60 100%);
 
   /* Mozilla Firefox */
@@ -82,49 +124,46 @@ body {
   float: left;
 }
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+.formContainer {
+  max-height: 954px;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
-
 
 
 /* card */
 
+.groupEventsContainer {
+  max-height: 890px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.groupEventsContainer:hover {
+  overflow-y: auto;
+}
+
 .groupEvent {
   height: 400px;
   width: 31%;
-  background: #f1c40f;
+  background: white;
   margin: 1%;
   float: left;
   padding: 10px;
   /* border-radius: 8px 8px 40px 40px; */
   position: relative;
-  outline: 3px dashed #f1c40f;
+/*  border: 3px dashed black;*/
+  border-radius: 3px;
+}
+
+.stickynote
+{
+  background: -webkit-linear-gradient(#F9EFAF, #F7E98D);
+  background: -moz-linear-gradient(#F9EFAF, #F7E98D);
+  background: -o-linear-gradient(#F9EFAF, #F7E98D);
+  background: -ms-linear-gradient(#F9EFAF, #F7E98D);
+  background: linear-gradient(#F9EFAF, #F7E98D);
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
 }
 
 .carInfo {

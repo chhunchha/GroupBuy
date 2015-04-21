@@ -1,14 +1,5 @@
 
-
-<!-- <div>
-	<ul ng-repeat="events in groupBuyEvents">
-		<li>
-			{{events}}
-		</li>
-	</ul>
-</div> -->
-
-<div class="col-md-3" id="top">
+<div class="col-md-3 formContainer" id="top">
 	<form name="groupCreationForm">
 		<h4> Are you? </h4>
 		<div class="btn-group">
@@ -69,13 +60,14 @@
 		</div>
 	</form>
 </div>
-<div class="goToTop">
-	<a href="#top"> ^ Top </a>
-</div>
-<div class="col-md-9">
-<!-- 	{{groupBuyEvents}}
- -->	<h1> Existing groups </h1>
-	<div class="groupEvent" ng-repeat="e in groupBuyEvents">
+<a href="#top">
+	<div class="goToTop">
+	 ^ Top </a>
+	</div>
+</a>
+<h2> Existing groups </h2>
+<div class="col-md-9 groupEventsContainer">
+	<div class="groupEvent stickynote"  ng-repeat="e in groupBuyEvents">
 		<div class="carInfo">
 			<span> {{e.year + ' ' + e.make + ' ' + e.model + ' ' + e.style}}</span>
 		</div>
