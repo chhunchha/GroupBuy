@@ -25,25 +25,15 @@
 			<input type="text" class="form-control frmField" ng-model="dealer.name" placeholder="Dealer Name"></input>
 
 			<input type="text" class="form-control frmField" ng-model="dealer.address" placeholder="Dealer address"></input>
-			<input type="text" class="form-control frmField" ng-model="dealer.zip" placeholder="zip" ng-change="getCityState()"></input>
+			<input type="text" class="form-control frmField" ng-model="dealer.zip" placeholder="Zip" ng-change="getCityState()"></input>
 			<input type="text" class="form-control frmField" ng-model="dealer.city" placeHolder="City" disabled></input>
 			<input type="text" class="form-control frmField" ng-model="dealer.state" placeHolder="State" disabled></input>
-		</div>
-		<div style="display:inline-block; width: 100%;">
-			<h4> Pricing </h4>
-			<input type ="text" class="form-control frmField" ng-model="price" placeholder="Price"></input>
-			<input type="text" class="form-control frmField" ng-model="discount" placeholder="Discount"></input>
-			<h4> Group size: </h4>
-			<select class="form-control frmField" ng-model="groupSize">
-				<option ng-repeat="i in noOfYears(9) track by $index" value="{{$index + 2}}"> {{$index + 2}}
-				</option>
-			</select>
 		</div>
 		<div style="display:inline-block; width: 100%;">
 			<h4> Buy Before: </h4>
 
 			<p class="input-group">
-          		<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="buyBefore" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+          		<input type="text" class="form-control frmField" datepicker-popup="{{format}}" ng-model="buyBefore" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
           		<span class="input-group-btn">
             		<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
           		</span>
@@ -51,6 +41,22 @@
 
     		<!-- <datepicker ng-model="buyBefore" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker> -->
 		</div>
+		<div style="display:inline-block; width: 100%;">
+			<h4> Pricing </h4>
+			<input type ="text" class="form-control frmField" ng-model="price" placeholder="Price"></input>
+			<input type="text" class="form-control frmPriceField frmField" ng-model="discount" placeholder="Discount"></input>
+			<select class="form-control frmDiscountField frmField" ng-model="discountType">
+				<option value="%">%</option>
+				<option value="$">$</option>
+			</select>
+
+			<h4> Group size: </h4>
+			<select class="form-control frmField" ng-model="groupSize">
+				<option ng-repeat="i in noOfYears(9) track by $index" value="{{$index + 2}}"> {{$index + 2}}
+				</option>
+			</select>
+		</div>
+
 
 		<textarea class="form-control frmField notesField" ng-model="notes" placeholder="Notes"></textarea>
 
@@ -77,8 +83,9 @@
 		<div class="priceInfo">
 			<span> Price: {{e.price | currency}} </span>
 		</div>
-		<div class="smallCircle discountInfo">
-			{{e.discount}}
+		<div class="priceInfo">
+			<span ng-if="e.discountType=='%'"> Discount: {{e.discount}}% </span>
+			<span ng-if="e.discountType=='$'"> Discount: {{e.discount | currency}} </span>
 		</div>
 		<div class="smallCircle groupSize">
 			<span> 1/{{e.groupSize}} </span>

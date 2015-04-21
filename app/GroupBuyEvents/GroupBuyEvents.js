@@ -26,7 +26,7 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 	  	//http://edmunds.mashery.com/docs/read/The_Vehicle_API
 
 	  	$scope.groupBuyEvent = {};
-
+		$scope.discountType = "%";
 	  	$scope.saveGroupBuyForm = function() {
 
 	  		$scope.groupBuyEvent = {
@@ -41,6 +41,7 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 	  			state: $scope.dealer.state,
 	  			price: $scope.price,
 	  			discount: $scope.discount,
+	  			discountType: $scope.discountType,
 	  			buyBefore: Date.parse($scope.buyBefore),
 	  			groupSize: $scope.groupSize,
 	  			notes: $scope.notes

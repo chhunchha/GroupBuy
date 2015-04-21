@@ -40,8 +40,19 @@ body {
 
 
 .frmField {
-  margin: 0 0 10px 0px;
+  margin: 0 0 6px 0px;
   font-size: 20px !important;
+}
+
+.frmPriceField {
+  width: 75% !important;
+  display: inline-block !important;
+}
+
+.frmDiscountField {
+  width: 20% !important;
+  float: right;
+  display: inline-block !important;
 }
 
 .frmButton {
@@ -60,18 +71,19 @@ body {
   z-index: 1000;
   padding-left: 10px;
   padding-right: 10px;
-  border-bottom: 1px dashed #f1c40f;
+  /*border-bottom: 1px dashed #f1c40f;*/
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
 }
 
 .goToTop {
   position: fixed;
-  bottom: 10px;
-  left: 0px;
-  background:  #27ae60;
+  top: 12%;
+  right: 0px;
+  /* background: #27ae60; */
   padding-right: 10px;
   border-radius: 0 10px 10px 0px;
   opacity: 0.5;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.6);
+  /* box-shadow: 0 4px 6px rgba(0,0,0,0.6); */
 }
 
 .goToTop:hover {
@@ -203,7 +215,7 @@ body {
   position: absolute;
   bottom: 0px;
   left: 0px;
-  border-radius: 100% 100% 100% 0;
+  border-radius: 100%;
 }
 
 .discountInfo {
@@ -219,6 +231,6 @@ body {
 .cardActions {
   position: absolute;
   bottom: 10px;
-  width: 100%;
-  text-align: center;
+  width: 95%;
+  text-align: right;
 }
