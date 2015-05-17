@@ -38,9 +38,12 @@ body {
   padding: 0;
 }
 
+.actionBar {
+  padding: 10px;
+}
 
 .frmField {
-  margin: 0 0 6px 0px;
+  margin: 0 0 15px 0px;
   font-size: 20px !important;
 }
 
@@ -137,25 +140,23 @@ body {
 }
 
 .formContainer {
-  max-height: 954px;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  padding: 10px;
 }
 
 
 /* card */
 
 .groupEventsContainer {
-  max-height: 890px;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  /*max-height: 890px;*/
+/*  overflow-y: hidden;
+  overflow-x: hidden;*/
   width: 100%;
   padding: 10px;
 }
 
-.groupEventsContainer:hover {
+/*.groupEventsContainer:hover {
   overflow-y: auto;
-}
+}*/
 
 .existingGroupList {
   width: 100%;
@@ -168,16 +169,16 @@ body {
 
 .groupEvent {
   height: 100%;
-  width: 98%;
+  width: 100%;
   background: white;
-  margin: 1%;
+  margin: 10px 0 0 0;
   float: left;
   padding: 10px;
   /* border-radius: 8px 8px 40px 40px; */
   position: relative;
-/*  border: 3px dashed black;*/
+  /* border: 3px dashed black; */
   border-radius: 3px;
-  font-family:"Reenie Beanie",arial,sans-serif;
+  font-family: "Reenie Beanie",arial,sans-serif;
   font-size: 40px;
   font-weight: 500;
 }
@@ -223,7 +224,8 @@ body {
 .cardActions {
   position: absolute;
   bottom: 10px;
-  width: 98%;
+  right: 10px;
+  /* width: 99%; */
   text-align: right;
   font-family: arial,sans-serif;
 }
@@ -243,6 +245,12 @@ body {
   display: inline-block;
 }
 
+.formEventToggleButton {
+    top: 10px;
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+}
 /******** Grid ******/
 
 .existingGroupGrid {

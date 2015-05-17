@@ -1,120 +1,83 @@
-<!--
-<div class="col-md-3 formContainer" id="top">
+<button class="g-float-right btn btn-info formEventToggleButton" ng-show="!showGroupEvents" ng-click="showGroupEvents=!showGroupEvents">Show Events</button>
+<button class="g-float-right btn btn-info formEventToggleButton" ng-show="showGroupEvents" ng-click="showGroupEvents=!showGroupEvents">+ Add New</button>
+
+<div ng-show="!showGroupEvents" class="col-md-12 formContainer animated" id="top" ng-class="{ fadeOut: showGroupEvents, fadeIn: !showGroupEvents }">
 	<form name="groupCreationForm">
-		<h4> Are you? </h4>
-		<div class="btn-group">
-    		<label class="btn btn-primary" ng-model="typeOfUser" btn-radio="'Buyer'">Buyer</label>
-    		<label class="btn btn-primary" ng-model="typeOfUser" btn-radio="'Dealer'">Dealer</label>
-	    </div>
-		<h4>Select car </h4>
-		<select class="form-control frmField" ng-model="carSelection.year" ng-change="getMakes()">
-			<option ng-repeat="i in noOfYears(5) track by $index" value="{{currentYear - $index}}"> {{currentYear - $index}}
-			</option>
-		</select>
-		<select class="form-control frmField" ng-model="carSelection.make" ng-change="refreshModels()" ng-options="make.name for make in makes.makes">
-			<option value=""> Select Make</option>
-		</select>
-		<select class="form-control frmField" ng-model="carSelection.model" ng-change="getStyles()" ng-options="model.name for model in models">
-			<option value=""> Select Model</option>
-		</select>
-		<select class="form-control frmField" ng-model="carSelection.style" ng-change="" ng-options="style.name for style in styles">
-			<option value=""> Select style</option>
-		</select>
-		<div style="display:inline-block; width: 100%;">
-			<h4> Car Dealer Information </h4>
-			<input type="text" class="form-control frmField" ng-model="dealer.name" placeholder="Dealer Name"></input>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Select car </h4>
+				<select class="form-control frmField" ng-model="carSelection.year" ng-change="getMakes()">
+					<option ng-repeat="i in noOfYears(5) track by $index" value="{{currentYear - $index}}"> {{currentYear - $index}}
+					</option>
+				</select>
+				<select class="form-control frmField" ng-model="carSelection.make" ng-change="refreshModels()" ng-options="make.name for make in makes.makes">
+					<option value=""> Make</option>
+				</select>
+				<select class="form-control frmField" ng-model="carSelection.model" ng-change="getStyles()" ng-options="model.name for model in models">
+					<option value=""> Model</option>
+				</select>
+				<select class="form-control frmField" ng-model="carSelection.style" ng-change="" ng-options="style.name for style in styles">
+					<option value=""> Style</option>
+				</select>
 
-			<input type="text" class="form-control frmField" ng-model="dealer.address" placeholder="Dealer address"></input>
-			<input type="text" class="form-control frmField" ng-model="dealer.zip" placeholder="Zip" ng-change="getCityState()"></input>
-			<input type="text" class="form-control frmField" ng-model="dealer.city" placeHolder="City" disabled></input>
-			<input type="text" class="form-control frmField" ng-model="dealer.state" placeHolder="State" disabled></input>
+				<div style="display:inline-block; width: 100%;">
+					<h4> Car Dealer Information </h4>
+					<input type="text" class="form-control frmField" ng-model="dealer.name" placeholder="Dealer Name"></input>
+
+					<input type="text" class="form-control frmField" ng-model="dealer.address" placeholder="Dealer address"></input>
+					<input type="text" class="form-control frmField" ng-model="dealer.zip" placeholder="Zip" ng-change="getCityState()"></input>
+					<input type="text" class="form-control frmField" ng-model="dealer.city" placeHolder="City" disabled></input>
+					<input type="text" class="form-control frmField" ng-model="dealer.state" placeHolder="State" disabled></input>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div style="display:inline-block; width: 100%;">
+					<h4> Buy Before </h4>
+
+					<p class="input-group">
+		          		<input type="text" class="form-control frmField" datepicker-popup="{{format}}" ng-model="buyBefore" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+		          		<span class="input-group-btn">
+		            		<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+		          		</span>
+		        	</p>
+
+		    		<!-- <datepicker ng-model="buyBefore" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker> -->
+				</div>
+				<div style="display:inline-block; width: 100%;">
+					<h4> Pricing </h4>
+					<input type ="text" class="form-control frmField" ng-model="price" placeholder="Price"></input>
+					<input type="text" class="form-control frmPriceField frmField" ng-model="discount" placeholder="Discount"></input>
+					<select class="form-control frmDiscountField frmField" ng-model="discountType">
+						<option value="%">%</option>
+						<option value="$">$</option>
+					</select>
+
+					<h4> Group size </h4>
+					<select class="form-control frmField" ng-model="groupSize">
+						<option ng-repeat="i in noOfYears(9) track by $index" value="{{$index + 2}}"> {{$index + 2}}
+						</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<h4> Notes </h4>
+				<textarea class="form-control frmField notesField" ng-model="notes" placeholder="Notes"></textarea>
+				<h4> Are you? </h4>
+				<div class="btn-group">
+		    		<label class="btn btn-primary" ng-model="typeOfUser" btn-radio="'Buyer'">Buyer</label>
+		    		<label class="btn btn-primary" ng-model="typeOfUser" btn-radio="'Dealer'">Dealer</label>
+			    </div>
+			</div>
 		</div>
-		<div style="display:inline-block; width: 100%;">
-			<h4> Buy Before: </h4>
-
-			<p class="input-group">
-          		<input type="text" class="form-control frmField" datepicker-popup="{{format}}" ng-model="buyBefore" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-          		<span class="input-group-btn">
-            		<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-          		</span>
-        	</p> -->
-
-    		<!-- <datepicker ng-model="buyBefore" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker> -->
-<!-- 		</div>
-		<div style="display:inline-block; width: 100%;">
-			<h4> Pricing </h4>
-			<input type ="text" class="form-control frmField" ng-model="price" placeholder="Price"></input>
-			<input type="text" class="form-control frmPriceField frmField" ng-model="discount" placeholder="Discount"></input>
-			<select class="form-control frmDiscountField frmField" ng-model="discountType">
-				<option value="%">%</option>
-				<option value="$">$</option>
-			</select>
-
-			<h4> Group size: </h4>
-			<select class="form-control frmField" ng-model="groupSize">
-				<option ng-repeat="i in noOfYears(9) track by $index" value="{{$index + 2}}"> {{$index + 2}}
-				</option>
-			</select>
-		</div>
-
-
-		<textarea class="form-control frmField notesField" ng-model="notes" placeholder="Notes"></textarea>
-
-		<div class="formActionButtons">
-			<button class="btn btn-sm btn-info g-float-right frmButton" ng-click="saveGroupBuyForm()"> Create </button>
-			<button class="btn btn-sm btn-danger g-float-right frmButton" ng-click="resetGroupBuyForm()"> Clear </button>
+		<div class="row formActionButtons">
+			<button class="btn btn-info g-float-right frmButton" ng-click="saveGroupBuyForm()"> Create </button>
+			<button class="btn btn-danger g-float-right frmButton" ng-click="resetGroupBuyForm()"> Clear </button>
 		</div>
 	</form>
 </div>
-<a href="#top">
-	<div class="goToTop">
-	 ^ Top </a>
-	</div>
-</a> -->
-<h2> Existing groups </h2>
-<div class="groupEventsContainer">
-		<!-- <div>
-			<h3> Filter
-		</div> -->
-		<!-- <div class="filters">
-			<div class="filter"> <span>Year: </span><input type="text" ng-model="filterOptions.year"/></div>
-			<div class="filter"> <span>Make: </span><input type="text" ng-model="filterOptions.make"/></div>
-			<div class="filter"> <span>Model: </span><input type="text" ng-model="filterOptions.model"/></div>
-			<div class="filter"> <span>Style: </span><input type="text" ng-model="filterOptions.style"/></div>
-			<div class="filter"> <span>City: </span><input type="text" ng-model="filterOptions.city"/></div>
-			<div class="filter"> <span>Zip: </span><input type="text" ng-model="filterOptions.zip"/></div>
-			<div class="filter"> <span>Groupsize </span><input type="text" ng-model="filterOptions.zip"/></div>
-		</div> -->
-		<!-- <table class="existingGroupList">
-				<tr>
-					<th>Year</th>
-					<th>Make</th>
-					<th>Model</th>
-					<th>Style</th>
-					<th>Dealer</th>
-					<th>Address, City</th>
-					<th>Price</th>
-					<th>Discount</th>
-					<th>Buy Before</th>
-					<th></th>
-				</tr>
-				<tr ng-repeat="e in groupBuyEvents | filter : filterOptions">
-					<td>{{e.year}}</td>
-					<td>{{e.make}}</td>
-					<td>{{e.model}}</td>
-					<td>{{e.style}}</td>
-					<td>{{e.dealerName}}</td>
-					<td>{{e.dealerAddress}}, {{e.city}}, {{e.state}} - {{e.zip}}</td>
-					<td>{{e.price || currency}}</td>
-					<td>
-						<span ng-if="e.discountType=='%'">{{e.discount}}% </span>
-						<span ng-if="e.discountType=='$'">{{e.discount | currency}} </span>
-					</td>
-					<td>{{e.buyBefore | date:'MMM-dd-yyyy'}} </td>
-					<td><button class="joinGroupButton btn btn-sm btn-info frmField">Join</button> <span> 1/{{e.groupSize}} </span></td>
-				</tr>
-		</table>
- -->
+<div ng-show="showGroupEvents" class="animated groupEventsContainer" ng-class="{ fadeOut: !showGroupEvents, fadeIn: showGroupEvents }">
+	<h2 > Existing groups </h2>
+	<div>
 		<div ui-grid="gridOptions" ui-grid-selection class="existingGroupGrid"></div>
 		<div class="groupEvent stickynote" ng-if="selectedEvent">
 			<div class="carInfo">
@@ -140,8 +103,8 @@
 				<span> Note: {{selectedEvent.notes}} </span>
 			</div>
 			<div class="cardActions">
-				<button class="joinGroupButton btn btn-sm btn-info frmField">Join</button>
+				<button class="joinGroupButton btn btn-info frmButton">Join</button>
 			</div>
 		</div>
-
+	</div>
 </div>

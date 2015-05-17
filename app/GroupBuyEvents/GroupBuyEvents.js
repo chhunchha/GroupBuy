@@ -15,6 +15,8 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 		var ref = new Firebase("https://groupbuy.firebaseio.com/groupbuyevents");
 		// download the data into a local object
 
+		$scope.showGroupEvents = true;
+
 		$scope.groupBuyEvents = $firebaseArray(ref);
 	  	// putting a console.log here won't work, see below
 
