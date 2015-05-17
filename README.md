@@ -2,11 +2,14 @@
 
 # firebase
 
-
-1. clearning form on load, save and clear button click
-2. showing circle with discount
-3. showing circle with people joined / group size
-4. adding user as buyyer if buyer selected otherwise dealer should not be added
-5. owner of the group event to modify edit delete
-6. restriction on few fields not to be edited once created
-7. mail notification to creator on people joining in and sharing contact details between group.
+TO DO
+- clearning form on load, save and clear button click
+- owner of the group event to modify edit delete
+- restriction on few fields not to be edited once created
+- mail notification to creator on people joining in and sharing contact details between group.
+- Join functionality
+- Ask functionality
+- flip card to show more details - people already joined, some comments/updates
+- notification to owner on comment/join/questions
+- on expiry move to expired and don't show
+- on success completetion ask for comments and move to completed
