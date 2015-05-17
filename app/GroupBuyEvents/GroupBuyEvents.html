@@ -1,4 +1,4 @@
-
+<!--
 <div class="col-md-3 formContainer" id="top">
 	<form name="groupCreationForm">
 		<h4> Are you? </h4>
@@ -37,10 +37,10 @@
           		<span class="input-group-btn">
             		<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
           		</span>
-        	</p>
+        	</p> -->
 
     		<!-- <datepicker ng-model="buyBefore" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker> -->
-		</div>
+<!-- 		</div>
 		<div style="display:inline-block; width: 100%;">
 			<h4> Pricing </h4>
 			<input type ="text" class="form-control frmField" ng-model="price" placeholder="Price"></input>
@@ -70,34 +70,78 @@
 	<div class="goToTop">
 	 ^ Top </a>
 	</div>
-</a>
+</a> -->
 <h2> Existing groups </h2>
-<div class="col-md-9 groupEventsContainer">
-	<div class="groupEvent stickynote"  ng-repeat="e in groupBuyEvents">
-		<div class="carInfo">
-			<span> {{e.year + ' ' + e.make + ' ' + e.model + ' ' + e.style}}</span>
+<div class="groupEventsContainer">
+		<!-- <div>
+			<h3> Filter
+		</div> -->
+		<!-- <div class="filters">
+			<div class="filter"> <span>Year: </span><input type="text" ng-model="filterOptions.year"/></div>
+			<div class="filter"> <span>Make: </span><input type="text" ng-model="filterOptions.make"/></div>
+			<div class="filter"> <span>Model: </span><input type="text" ng-model="filterOptions.model"/></div>
+			<div class="filter"> <span>Style: </span><input type="text" ng-model="filterOptions.style"/></div>
+			<div class="filter"> <span>City: </span><input type="text" ng-model="filterOptions.city"/></div>
+			<div class="filter"> <span>Zip: </span><input type="text" ng-model="filterOptions.zip"/></div>
+			<div class="filter"> <span>Groupsize </span><input type="text" ng-model="filterOptions.zip"/></div>
+		</div> -->
+		<!-- <table class="existingGroupList">
+				<tr>
+					<th>Year</th>
+					<th>Make</th>
+					<th>Model</th>
+					<th>Style</th>
+					<th>Dealer</th>
+					<th>Address, City</th>
+					<th>Price</th>
+					<th>Discount</th>
+					<th>Buy Before</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="e in groupBuyEvents | filter : filterOptions">
+					<td>{{e.year}}</td>
+					<td>{{e.make}}</td>
+					<td>{{e.model}}</td>
+					<td>{{e.style}}</td>
+					<td>{{e.dealerName}}</td>
+					<td>{{e.dealerAddress}}, {{e.city}}, {{e.state}} - {{e.zip}}</td>
+					<td>{{e.price || currency}}</td>
+					<td>
+						<span ng-if="e.discountType=='%'">{{e.discount}}% </span>
+						<span ng-if="e.discountType=='$'">{{e.discount | currency}} </span>
+					</td>
+					<td>{{e.buyBefore | date:'MMM-dd-yyyy'}} </td>
+					<td><button class="joinGroupButton btn btn-sm btn-info frmField">Join</button> <span> 1/{{e.groupSize}} </span></td>
+				</tr>
+		</table>
+ -->
+		<div ui-grid="gridOptions" ui-grid-selection class="existingGroupGrid"></div>
+		<div class="groupEvent stickynote" ng-if="selectedEvent">
+			<div class="carInfo">
+				<span> {{selectedEvent.year + ' ' + selectedEvent.make + ' ' + selectedEvent.model + ' ' + selectedEvent.style}}</span>
+			</div>
+			<div class="dealerInfo">
+				<span> {{selectedEvent.dealerName + ', ' + selectedEvent.dealerAddress + ', ' + selectedEvent.city + ', ' + selectedEvent.state + ' - ' + selectedEvent.zip}} </span>
+			</div>
+			<div class="priceInfo">
+				<span> Price: {{selectedEvent.price | currency}} </span>
+			</div>
+			<div class="priceInfo">
+				<span ng-if="selectedEvent.discountType=='%'"> Discount: {{selectedEvent.discount}}% </span>
+				<span ng-if="selectedEvent.discountType=='$'"> Discount: {{selectedEvent.discount | currency}} </span>
+			</div>
+			<div class="smallCircle groupSize">
+				<span> 1/{{selectedEvent.groupSize}} </span>
+			</div>
+			<div class="buyBefore">
+				<span> Buy Before: {{selectedEvent.buyBefore | date:'dd-MMM-yyyy'}} </span>
+			</div>
+			<div class="notes">
+				<span> Note: {{selectedEvent.notes}} </span>
+			</div>
+			<div class="cardActions">
+				<button class="joinGroupButton btn btn-sm btn-info frmField">Join</button>
+			</div>
 		</div>
-		<div class="dealerInfo">
-			<span> {{e.dealerName + ', ' + e.dealerAddress + ', ' + e.city + ', ' + e.state + ' - ' + e.zip}} </span>
-		</div>
-		<div class="priceInfo">
-			<span> Price: {{e.price | currency}} </span>
-		</div>
-		<div class="priceInfo">
-			<span ng-if="e.discountType=='%'"> Discount: {{e.discount}}% </span>
-			<span ng-if="e.discountType=='$'"> Discount: {{e.discount | currency}} </span>
-		</div>
-		<div class="smallCircle groupSize">
-			<span> 1/{{e.groupSize}} </span>
-		</div>
-		<div class="buyBefore">
-			<span> Buy Before: {{e.buyBefore | date:'dd-MMM-yyyy'}} </span>
-		</div>
-		<div class="notes">
-			<span> Note: {{e.notes}} </span>
-		</div>
-		<div class="cardActions">
-			<button class="joinGroupButton btn btn-sm btn-info frmField">Join</button>
-		</div>
-	</div>
+
 </div>

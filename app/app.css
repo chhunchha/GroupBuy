@@ -97,7 +97,7 @@ body {
   height: 90%;
   width: 100%;
   overflow: auto;
-  background: url(http://subtlepatterns.com/patterns/little_pluses.png) #cacaca;
+  /*background: url(http://subtlepatterns.com/patterns/little_pluses.png) #cacaca;*/
 }
 
 .gradiantShadow {
@@ -149,15 +149,26 @@ body {
   max-height: 890px;
   overflow-y: hidden;
   overflow-x: hidden;
+  width: 100%;
+  padding: 10px;
 }
 
 .groupEventsContainer:hover {
   overflow-y: auto;
 }
 
+.existingGroupList {
+  width: 100%;
+}
+
+.existingGroupList tr {
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 40px;
+}
+
 .groupEvent {
-  height: 400px;
-  width: 31%;
+  height: 100%;
+  width: 98%;
   background: white;
   margin: 1%;
   float: left;
@@ -166,6 +177,9 @@ body {
   position: relative;
 /*  border: 3px dashed black;*/
   border-radius: 3px;
+  font-family:"Reenie Beanie",arial,sans-serif;
+  font-size: 40px;
+  font-weight: 500;
 }
 
 .stickynote
@@ -176,28 +190,6 @@ body {
   background: -ms-linear-gradient(#F9EFAF, #F7E98D);
   background: linear-gradient(#F9EFAF, #F7E98D);
   box-shadow:0 4px 6px rgba(0,0,0,0.1);
-}
-
-.carInfo {
-  color: #d35400;
-  font-weight: 500;
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-
-.dealerInfo {
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.priceInfo {
-  font-weight: 500;
-  margin-bottom: 10px;
-  color: #8e44ad;
-}
-
-.notes {
-
 }
 
 .smallCircle {
@@ -211,16 +203,16 @@ body {
 .groupSize {
   background: #2980b9;
   color: white;
-  font-size: 30px;
+  /*font-size: 30px;*/
   position: absolute;
-  bottom: 0px;
-  left: 0px;
+  top: 0px;
+  right: 0px;
   border-radius: 100%;
 }
 
 .discountInfo {
   background: #8e44ad;
-  color: white;
+  /*color: white;*/
   font-size: 24px;
   position: absolute;
   right: 0px;
@@ -231,6 +223,29 @@ body {
 .cardActions {
   position: absolute;
   bottom: 10px;
-  width: 95%;
+  width: 98%;
   text-align: right;
+  font-family: arial,sans-serif;
+}
+
+
+.filters {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.filter span {
+  font-weight: 500;
+}
+
+.filter {
+  margin-right: 5px;
+  display: inline-block;
+}
+
+/******** Grid ******/
+
+.existingGroupGrid {
+    width: 100%;
+    height: 500px;
 }

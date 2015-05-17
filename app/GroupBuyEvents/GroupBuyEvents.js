@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.bootstrap','zippopotam'])
+angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.bootstrap','zippopotam','ui.grid','ui.grid.selection'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/GroupBuyEvents', {
@@ -24,6 +24,46 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 
 	  	//Vehicle data API
 	  	//http://edmunds.mashery.com/docs/read/The_Vehicle_API
+
+	  	$scope.gridOptions = {
+	  		enableColumnResizing: true,
+        	enableFiltering: true,
+        	enableRowSelection: true,
+        	enableRowHeaderSelection: false,
+        	multiSelect: false,
+        	rowHeight: 40,
+	  		data: $scope.groupBuyEvents,
+	  		columnDefs: [
+	          { name: 'Year', field: 'year', width: '8%' },
+	          { name: 'Make', field: 'make', width: '10%' },
+	          { name: 'Model', field: 'model', width: '10%'},
+	          // { name: 'Style', field: 'style', width: '10%'},
+	          { name: 'Dealer Name', field: 'dealerName', width: '15%'},
+	          // { name: 'Address', field: 'dealerAddress', width: '15%'},
+	          { name: 'City', width: '20%', cellTemplate: '<div class="ui-grid-cell-contents"><span>{{row.entity.city}}, {{row.entity.state}}</span></div>'},
+	          // { name: 'State', field: 'state', width: '5%'},
+	          { name: 'Zip', field: 'zip', width: '10%'},
+	          { name: 'Price', field: 'price', width: '10%', cellFilter: 'currency'},
+	          {	name: 'Discount', width: '7%',
+	          	cellTemplate: '<div class="ui-grid-cell-contents"> ' +
+	          	'<span ng-if="row.entity.discountType==\'$\'">{{row.entity.discountType}}</span>' +
+	          	'<span>{{row.entity.discount}}</span>' +
+	          	'<span ng-if="row.entity.discountType==\'%\'">{{row.entity.discountType}}</span>' +
+	          	'</div>' },
+	          // {	name: 'Type', field: 'discountType', width: '5%'},
+	          { name: 'Buy Before', field: 'buyBefore', width: '10%', cellFilter: 'date:"MMM-dd-yyyy"'}
+        	]
+	  	}
+
+	  	$scope.selectedEvent = null;
+		$scope.gridOptions.onRegisterApi = function(gridApi){
+			//set gridApi on scope
+			$scope.gridApi = gridApi;
+			gridApi.selection.on.rowSelectionChanged($scope,function(row){
+				$scope.selectedEvent = row.entity;
+			});
+
+		};
 
 	  	$scope.groupBuyEvent = {};
 		$scope.discountType = "%";
@@ -140,6 +180,16 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
     		$scope.buyBefore = $scope.minDate;
   		};
 
+
+
+  		$scope.filterOptions = {
+  			make: '',
+  			model: '',
+  			year: '',
+  			style: '',
+  			city: '',
+  			zip: ''
+  		};
   		$scope.toggleMin();
 		$scope.getMakes();
 	}
