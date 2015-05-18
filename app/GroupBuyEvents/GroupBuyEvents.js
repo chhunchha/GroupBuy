@@ -28,13 +28,13 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 		// 	}
 		// });
 
-		ref.authWithOAuthPopup("google", function(error, authData) {
-			if (error) {
-				console.log("Login Failed!", error);
-			} else {
-				console.log("Authenticated successfully with payload:", authData);
-			}
-		});
+		// ref.authWithOAuthPopup("google", function(error, authData) {
+		// 	if (error) {
+		// 		console.log("Login Failed!", error);
+		// 	} else {
+		// 		console.log("Authenticated successfully with payload:", authData);
+		// 	}
+		// });
 
 		$scope.showGroupEvents = true;
 
