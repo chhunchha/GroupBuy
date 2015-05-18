@@ -20,21 +20,21 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 	  	// Google authentication
 	  	//https://www.firebase.com/docs/web/guide/login/google.html
 
-	  	ref.authWithOAuthRedirect("google", function(error) {
-			if (error) {
-				console.log("Login Failed!", error);
-			} else {
-				// We'll never get here, as the page will redirect on success.
-			}
-		});
-
-		// ref.authWithOAuthPopup("google", function(error, authData) {
+	 //  	ref.authWithOAuthRedirect("google", function(error) {
 		// 	if (error) {
 		// 		console.log("Login Failed!", error);
 		// 	} else {
-		// 		console.log("Authenticated successfully with payload:", authData);
+		// 		// We'll never get here, as the page will redirect on success.
 		// 	}
 		// });
+
+		ref.authWithOAuthPopup("google", function(error, authData) {
+			if (error) {
+				console.log("Login Failed!", error);
+			} else {
+				console.log("Authenticated successfully with payload:", authData);
+			}
+		});
 
 		$scope.showGroupEvents = true;
 
