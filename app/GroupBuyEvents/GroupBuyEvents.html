@@ -79,28 +79,29 @@
 	<h2 > Existing groups </h2>
 	<div>
 		<div ui-grid="gridOptions" ui-grid-selection class="existingGroupGrid"></div>
-		<div class="groupEvent stickynote" ng-if="selectedEvent">
+		<div class="groupEvent stickynote animated" ng-if="selectedEvent" ng-class="{ slideOutLeft: !showGroupEvents, slideInRight: showGroupEvents }">
 			<div class="carInfo">
-				<span> {{selectedEvent.year + ' ' + selectedEvent.make + ' ' + selectedEvent.model + ' ' + selectedEvent.style}}</span>
+				<span class="g-lbl"> Car: </span><span> {{selectedEvent.year + ' ' + selectedEvent.make + ' ' + selectedEvent.model + ' ' + selectedEvent.style}}</span>
 			</div>
 			<div class="dealerInfo">
-				<span> {{selectedEvent.dealerName + ', ' + selectedEvent.dealerAddress + ', ' + selectedEvent.city + ', ' + selectedEvent.state + ' - ' + selectedEvent.zip}} </span>
+				<span class="g-lbl">Dealer: </span><span> {{selectedEvent.dealerName + ', ' + selectedEvent.dealerAddress + ', ' + selectedEvent.city + ', ' + selectedEvent.state + ' - ' + selectedEvent.zip}} </span>
 			</div>
 			<div class="priceInfo">
-				<span> Price: {{selectedEvent.price | currency}} </span>
+				<span class="g-lbl">Price: </span><span> Price: {{selectedEvent.price | currency}} </span>
 			</div>
 			<div class="priceInfo">
-				<span ng-if="selectedEvent.discountType=='%'"> Discount: {{selectedEvent.discount}}% </span>
-				<span ng-if="selectedEvent.discountType=='$'"> Discount: {{selectedEvent.discount | currency}} </span>
+				<span class="g-lbl">Discount: </span>
+				<span ng-if="selectedEvent.discountType=='%'">{{selectedEvent.discount}}% </span>
+				<span ng-if="selectedEvent.discountType=='$'">{{selectedEvent.discount | currency}} </span>
 			</div>
 			<div class="smallCircle groupSize">
 				<span> 1/{{selectedEvent.groupSize}} </span>
 			</div>
 			<div class="buyBefore">
-				<span> Buy Before: {{selectedEvent.buyBefore | date:'dd-MMM-yyyy'}} </span>
+				<span class="g-lbl">Buy Before: </span><span>{{selectedEvent.buyBefore | date:'dd-MMM-yyyy'}} </span>
 			</div>
 			<div class="notes">
-				<span> Note: {{selectedEvent.notes}} </span>
+				<span class="g-lbl">Note: </span><span>{{selectedEvent.notes}} </span>
 			</div>
 			<div class="cardActions">
 				<button class="joinGroupButton btn btn-info frmButton">Join</button>

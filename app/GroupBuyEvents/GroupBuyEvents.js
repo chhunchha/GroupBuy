@@ -15,14 +15,33 @@ angular.module('myApp.GroupBuyEvents', ['ngRoute','firebase','edmunds','ui.boots
 		var ref = new Firebase("https://groupbuy.firebaseio.com/groupbuyevents");
 		// download the data into a local object
 
+
+		//TO DO
+	  	// Google authentication
+	  	//https://www.firebase.com/docs/web/guide/login/google.html
+
+	  	ref.authWithOAuthRedirect("google", function(error) {
+			if (error) {
+				console.log("Login Failed!", error);
+			} else {
+				// We'll never get here, as the page will redirect on success.
+			}
+		});
+
+		ref.authWithOAuthPopup("google", function(error, authData) {
+			if (error) {
+				console.log("Login Failed!", error);
+			} else {
+				console.log("Authenticated successfully with payload:", authData);
+			}
+		});
+
 		$scope.showGroupEvents = true;
 
 		$scope.groupBuyEvents = $firebaseArray(ref);
 	  	// putting a console.log here won't work, see below
 
-	  	//TO DO
-	  	// Google authentication
-	  	//https://www.firebase.com/docs/web/guide/login/google.html
+
 
 	  	//Vehicle data API
 	  	//http://edmunds.mashery.com/docs/read/The_Vehicle_API
